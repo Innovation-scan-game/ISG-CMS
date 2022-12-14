@@ -38,7 +38,7 @@ export default {
   methods: {
     update() {
       axios
-        .get("http://localhost/products")
+        .get("https://cardisc.azurewebsites.net/api/cards")
         .then((result) => {
           console.log(result);
           this.products = result.data;
