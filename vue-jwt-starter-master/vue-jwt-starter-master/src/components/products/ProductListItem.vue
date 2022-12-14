@@ -2,14 +2,14 @@
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xxl-3 p-2">
     <div class="card product-card h-100">
       <div class="card-body">
-        <img :src="product.image" :alt="product.title" :title="product.title" />
+        <img :src="product.cardNumber" :alt="product.title" :title="product.title" />
         <div class="float-start">
-          <p>{{ product.name }}</p>
+          <p>{{ product.cardName }}</p>
           <p>
-            <small>{{ product.category.name }}</small>
+            <small>{{ product.cardBody }}</small>
           </p>
         </div>
-        <span class="price float-end">{{ product.price }}</span>
+        <span class="price float-end">{{ product.type }}</span>
       </div>
       <div class="card-footer">
         <button class="btn btn-warning" @click="editProduct(product.id)">Edit</button>&nbsp;&nbsp;
