@@ -12,10 +12,10 @@ export const useLoginStore = defineStore('loginStore', {
   },
   actions: {
     login(username, password) {
-        axios.post("/users/login", { username: username, password: password})
+        axios.post("/login", { username: username, password: password})
         .then(result => { 
-            this.username = result.data.username;
-            this.token = result.data.jwt;
+            this.username = result.data.user.username;
+            this.token = result.data.accessToken;
             axios.defaults.headers.common["Authorization"] = "Bearer " + this.token;
             localStorage.setItem("token", this.token,)
             localStorage.setItem("username", this.username,)

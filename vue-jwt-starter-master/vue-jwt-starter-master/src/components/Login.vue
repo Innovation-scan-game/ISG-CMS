@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 import { useLoginStore } from '@/stores/loginStore'
 
 export default {

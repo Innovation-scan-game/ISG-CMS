@@ -1,9 +1,9 @@
 <template>
   <section>
     <div class="container">
-      <h2 class="mt-3 mt-lg-5">Products</h2>
+      <h2 class="mt-3 mt-lg-5">Cards</h2>
         <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/createproduct');">
-            Add product
+            Add Cards
           </button>
       <div class="row mt-3">
         <product-list-item
