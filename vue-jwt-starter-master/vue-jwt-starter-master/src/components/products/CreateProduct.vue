@@ -58,14 +58,16 @@ export default {
       product: {
         cardName: "",
         cardBody: "",
-        type: "0"
+        type: 0
       },
     };
   },
   methods: {
     addProduct() {
+
       axios
-        .post("https://cardisc.azurewebsites.net/api/cards", this.product)
+        .post("https://cardisc.azurewebsites.net/api/cards", this.product
+        )
         .then((res) => {
           console.log(res.data);
           this.$refs.form.reset();

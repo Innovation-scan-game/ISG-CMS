@@ -2,43 +2,33 @@
   <section>
     <div class="container">
       <form ref="form">
-        <h2 class="mt-3 mt-lg-5">Edit a product</h2>
+        <h2 class="mt-3 mt-lg-5">Edit card</h2>
         <h5 class="mb-4"></h5>
 
         <div class="input-group mb-3">
-          <span class="input-group-text">Name</span>
-          <input type="text" class="form-control" v-model="product.name" />
+          <span class="input-group-text">Card Title</span>
+          <input type="text" class="form-control" v-model="product.cardName" />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text">Price</span>
-          <input type="number" class="form-control" v-model="product.price" />
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text">Description</span>
+          <span class="input-group-text">Card Question</span>
           <textarea
             class="form-control"
-            v-model="product.description"
+            v-model="product.cardBody"
           ></textarea>
         </div>
 
-        <div class="input-group mb-3">
-          <span class="input-group-text">Image URL</span>
-          <input type="text" class="form-control" v-model="product.image" />
-        </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text">Category</span>
-          <select class="form-select" v-model="product.category_id">
+          <span class="input-group-text">Card Category</span>
+          <!-- <select class="form-select" v-model="product.type">
             <option
               v-for="category in categories"
               :key="category.id"
-              :value="category.id"
-            >
+              :value="category.id">
               {{ category.name }}
             </option>
-          </select>
+          </select> -->
         </div>
 
         <div class="input-group mt-4">
@@ -59,7 +49,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from '../../axios-auth'
 
 export default {
   name: "CreateProduct",
@@ -69,20 +59,16 @@ export default {
   data() {
     return {
       product: {
-        id: 0,
-        name: "",
-        price: 0.0,
-        description: "",
-        image: "",
-        category_id: 0,
+        cardName: "",
+        cardBody: "",
+        type: 0
       },
-      categories: [],
     };
   },
   methods: {
     updateProduct() {
       axios
-        .put("http://localhost/products/" + this.product.id, this.product)
+        .put("https://cardisc.azurewebsites.net/api/cards/" + this.product.id, this.product)
         .then((res) => {
           console.log(res.data);
           this.$refs.form.reset();
@@ -90,22 +76,6 @@ export default {
         })
         .catch((error) => console.log(error));
     },
-  },
-  mounted() {
-    axios
-      .get("http://localhost/categories")
-      .then((result) => {
-        console.log(result);
-        this.categories = result.data;
-        axios
-          .get("http://localhost/products/" + this.id)
-          .then((result) => {
-            console.log(result);
-            this.product = result.data;
-          })
-          .catch((error) => console.log(error));
-      })
-      .catch((error) => console.log(error));
   },
 };
 </script>
