@@ -7,14 +7,14 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Title</span>
-          <input type="text" class="form-control" v-model="product.cardName" />
+          <input type="text" class="form-control" v-model="product.Name" />
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Question</span>
           <textarea
             class="form-control"
-            v-model="product.cardBody"
+            v-model="product.Body"
           ></textarea>
         </div>
 
@@ -56,8 +56,8 @@ export default {
   data() {
     return {
       product: {
-        cardName: "",
-        cardBody: "",
+        Name: "",
+        Body: "",
         type: 0
       },
     };
