@@ -21,6 +21,7 @@ export const useLoginStore = defineStore('loginStore', {
             localStorage.setItem("username", this.username,)
             this.expiration = result.data.expireAt;
             console.log(result.data);
+            // this.$router.push('/cards');
         }).catch(error => console.log(error));
     },
     restoreState(){

@@ -6,6 +6,12 @@
         <h5 class="mb-4"></h5>
 
         <div class="input-group mb-3">
+          <span class="input-group-text">Card Id</span>
+          <input type="text" :value="this.card.Id" class="form-control" disabled/>
+        </div>
+
+
+        <div class="input-group mb-3">
           <span class="input-group-text">Card Title</span>
           <input type="text" class="form-control" v-model="card.Name" />
         </div>
@@ -54,12 +60,12 @@ import axios from '../../axios-auth'
 export default {
   name: "CreateCards",
   props: {
-    id: Number,
+    id: String,
   },
   data() {
     return {
       card: {
-        id: "",
+        Id: this.id,
         Name: "",
         Body: "",
         type: 0
@@ -69,7 +75,7 @@ export default {
   methods: {
     updateCard() {
       axios
-        .put("https://cardisc.azurewebsites.net/api/cards/" + this.card.id, this.card)
+      .put("https://cardisc.azurewebsites.net/api/cards", this.card)
         .then((res) => {
           console.log(res.data);
           this.$refs.form.reset();

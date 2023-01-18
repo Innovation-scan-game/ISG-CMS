@@ -9,7 +9,7 @@ import Login from '../components/Login.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', component: Home },
+    { path: '/', component: Login },
     { path: '/cards', component: CardList },
     { path: '/login', component: Login },
     { path: '/createcard', component: CreateCard },
