@@ -8,7 +8,7 @@
         <div class="row mt-3">
           <user-list-item
             v-for="user in users"
-            :key="users.id"
+            :key="user.id"
             :user="user"
             @update="update"
           />
