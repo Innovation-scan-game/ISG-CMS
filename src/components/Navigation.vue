@@ -13,6 +13,11 @@
           >
         </li>
         <li class="nav-item">
+          <router-link to="/users" class="nav-link" active-class="active"
+            >Users</router-link
+          >
+        </li>
+        <li class="nav-item">
           <router-link to="/login" class="nav-link" active-class="active"
             >Login</router-link
           >
