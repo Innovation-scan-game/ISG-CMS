@@ -2,14 +2,14 @@
   <section>
     <div class="container">
       <h2 class="mt-3 mt-lg-5">Cards</h2>
-        <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/createproduct');">
+        <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/createcard');">
             Add Cards
           </button>
       <div class="row mt-3">
-        <product-list-item
-          v-for="product in products"
-          :key="product.id"
-          :product="product"
+        <card-list-item
+          v-for="card in cards"
+          :key="card.id"
+          :card="card"
           @update="update"
         />
       </div>
@@ -20,16 +20,16 @@
 <script>
 import axios from "../../axios-auth.js";
 
-import ProductListItem from "./ProductListItem.vue";
+import CardListItem from "./CardListItem.vue";
 
 export default {
-  name: "ProductList",
+  name: "CardList",
   components: {
-    ProductListItem,
+    CardListItem,
   },
   data() {
     return {
-      products: [],
+      cards: [],
     };
   },
   mounted() {
@@ -41,7 +41,7 @@ export default {
         .get("https://cardisc.azurewebsites.net/api/cards")
         .then((result) => {
           console.log(result);
-          this.products = result.data;
+          this.cards = result.data;
         })
         .catch((error) => console.log(error));
     },

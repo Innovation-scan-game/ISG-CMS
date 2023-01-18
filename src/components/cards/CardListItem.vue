@@ -2,18 +2,18 @@
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xxl-3 p-2">
     <div class="card product-card h-100">
       <div class="card-body">
-        <h2>{{product.cardNumber}}</h2>
+        <h2>{{card.cardNumber}}</h2>
         <div class="float-start">
-          <p>{{ product.cardName }}</p>
+          <p>{{ card.cardName }}</p>
           <p>
-            <small>{{ product.cardBody }}</small>
+            <small>{{ card.cardBody }}</small>
           </p>
         </div>
-        <!-- <span class="price float-end">{{ product.type }}</span> -->
+        <!-- <span class="price float-end">{{ card.type }}</span> -->
       </div>
       <div class="card-footer">
-        <button class="btn btn-warning" @click="editProduct(product.id)">Edit</button>&nbsp;&nbsp;
-        <button class="btn btn-danger" @click="deleteProduct(product.id)">Delete</button>
+        <button class="btn btn-warning" @click="editCard(card.id)">Edit</button>&nbsp;&nbsp;
+        <button class="btn btn-danger" @click="deleteCard(card.id)">Delete</button>
       </div>
     </div>
   </div>
@@ -23,12 +23,12 @@
 import axios from '../../axios-auth'
 
 export default {
-  name: "ProductListItem",
+  name: "CardListItem",
   props: {
-    product: Object,
+    card: Object,
   },
   methods: {
-    deleteProduct(id) {
+    deleteCard(id) {
       axios
         .delete("https://cardisc.azurewebsites.net/api/cards/" + id)
         .then((result) => {
@@ -37,8 +37,8 @@ export default {
         })
         .catch((error) => console.log(error));
     },
-    editProduct(id) {
-      this.$router.push('/editproduct/' + id);
+    editCard(id) {
+      this.$router.push('/editcard/' + id);
     }
   },
 };

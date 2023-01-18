@@ -7,21 +7,21 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Title</span>
-          <input type="text" class="form-control" v-model="product.Name" />
+          <input type="text" class="form-control" v-model="card.Name" />
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Question</span>
           <textarea
             class="form-control"
-            v-model="product.Body"
+            v-model="card.Body"
           ></textarea>
         </div>
 
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Category</span>
-          <!-- <select class="form-select" v-model="product.type">
+          <!-- <select class="form-select" v-model="card.type">
             <option
               v-for="category in categories"
               :key="category.id"
@@ -32,13 +32,13 @@
         </div>
 
         <div class="input-group mt-4">
-          <button type="button" class="btn btn-primary" @click="addProduct">
+          <button type="button" class="btn btn-primary" @click="addCard">
             Create Card
           </button>
           <button
             type="button"
             class="btn btn-danger"
-            @click="this.$router.push('/products')"
+            @click="this.$router.push('/cards')"
           >
             Cancel
           </button>
@@ -52,10 +52,10 @@
 import axios from '../../axios-auth'
 
 export default {
-  name: "CreateProduct",
+  name: "CreateCard",
   data() {
     return {
-      product: {
+      card: {
         Name: "",
         Body: "",
         type: 0
@@ -63,15 +63,15 @@ export default {
     };
   },
   methods: {
-    addProduct() {
+    addCard() {
 
       axios
-        .post("https://cardisc.azurewebsites.net/api/cards", this.product
+        .post("https://cardisc.azurewebsites.net/api/cards", this.card
         )
         .then((res) => {
           console.log(res.data);
           this.$refs.form.reset();
-          this.$router.push("/products");
+          this.$router.push("/cards");
         })
         .catch((error) => console.log(error));
     },
