@@ -24,13 +24,7 @@
             v-model="user.role"
           ></textarea>
         </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text">Picture</span>
-          <textarea
-            class="form-control"
-            v-model="user.picture"
-          ></textarea>
-        </div>        
+             
 
         <div class="input-group mt-4">
           <button type="button" class="btn btn-primary" @click="addUser">
@@ -57,10 +51,10 @@ export default {
   data() {
     return {
       user: {
-        Name: "",
+        username: "",
         email: "",
         role:"",
-        picture: "",
+        
       },
     };
   },
@@ -68,7 +62,7 @@ export default {
     addUser() {
 
       axios
-        .post("https://cardisc.azurewebsites.net/api/users", this.user
+        .post("https://cardisc.azurewebsites.net/api/users", this.username
         )
         .then((res) => {
           console.log(res.data);

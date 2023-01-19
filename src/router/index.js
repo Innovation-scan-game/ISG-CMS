@@ -7,6 +7,7 @@ import EditProduct from '../components/products/EditProduct.vue';
 import UserList from '../components/users/UserList.vue';
 import CreateUser from '../components/users/CreateUser.vue';
 import Login from '../components/Login.vue';
+import EditUser from '../components/users/EditUser.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +19,7 @@ const router = createRouter({
     { path: '/createproduct', component: CreateProduct },
     { path: '/editproduct/:id', component: EditProduct, props: true  },
     { path: '/createuser', component: CreateUser },
+    { path: '/edituser/:id', component: EditUser, props: true  },
   ]
 })
 

@@ -14,8 +14,8 @@ User list item
         <!-- <span class="price float-end">{{ user.type }}</span> -->
       </div>
       <div class="card-footer">
-        <button class="btn btn-warning" @click="editProduct(user.id)">Edit</button>&nbsp;&nbsp;
-        <button class="btn btn-danger" @click="deleteProduct(user.id)">Delete</button>
+        <button class="btn btn-warning" @click="editUser(user.id)">Edit</button>&nbsp;&nbsp;
+        <button class="btn btn-danger" @click="deleteUser(user.id)">Delete</button>
       </div>
     </div>
   </div>
@@ -30,17 +30,17 @@ export default {
     user: Object,
   },
   methods: {
-    deleteProduct(id) {
+    deleteUser(id) {
       axios
-        .delete("https://cardisc.azurewebsites.net/api/cards/" + id)
+        .delete("https://cardisc.azurewebsites.net/api/users/" + id)
         .then((result) => {
           console.log(result);
           this.$emit('update')
         })
         .catch((error) => console.log(error));
     },
-    editProduct(id) {
-      this.$router.push('/editproduct/' + id);
+    editUser(id) {
+      this.$router.push('/edituser/' + id);
     }
   },
 };
