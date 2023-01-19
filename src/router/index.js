@@ -5,6 +5,7 @@ import ProductList from '../components/products/ProductList.vue';
 import CreateProduct from '../components/products/CreateProduct.vue';
 import EditProduct from '../components/products/EditProduct.vue';
 import UserList from '../components/users/UserList.vue';
+import CreateUser from '../components/users/CreateUser.vue';
 import Login from '../components/Login.vue';
 
 const router = createRouter({
@@ -15,7 +16,8 @@ const router = createRouter({
     { path: '/users', component: UserList },
     { path: '/login', component: Login },
     { path: '/createproduct', component: CreateProduct },
-    { path: '/editproduct/:id', component: EditProduct, props: true  }
+    { path: '/editproduct/:id', component: EditProduct, props: true  },
+    { path: '/createuser', component: CreateUser },
   ]
 })
 
