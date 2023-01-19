@@ -5,6 +5,7 @@ export const useLoginStore = defineStore('loginStore', {
   state: () => ({
     token: '',
     username: '',
+    role: '',
     expiration: ''
   }),
   getters: {
@@ -16,12 +17,12 @@ export const useLoginStore = defineStore('loginStore', {
         .then(result => { 
             this.username = result.data.user.username;
             this.token = result.data.accessToken;
+            this.role = result.data.
             axios.defaults.headers.common["Authorization"] = "Bearer " + this.token;
             localStorage.setItem("token", this.token,)
             localStorage.setItem("username", this.username,)
             this.expiration = result.data.expireAt;
             console.log(result.data);
-            // this.$router.push('/cards');
         }).catch(error => console.log(error));
     },
     restoreState(){

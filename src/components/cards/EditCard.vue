@@ -27,14 +27,11 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Category</span>
-          <!-- <select class="form-select" v-model="card.type">
-            <option
-              v-for="category in categories"
-              :key="category.id"
-              :value="category.id">
-              {{ category.name }}
-            </option>
-          </select> -->
+          <select class="form-select" v-model="card.Type">
+            <option :value=0>Open answer</option>
+            <option :value=1>Scalable</option>
+            <option :value=2>Multiple choice</option>
+          </select>
         </div>
 
         <div class="input-group mt-4">
@@ -68,12 +65,13 @@ export default {
         Id: this.id,
         Name: "",
         Body: "",
-        type: 0
+        Type: 0
       },
     };
   },
   methods: {
     updateCard() {
+      parseInt(this.card.type)
       axios
       .put("https://cardisc.azurewebsites.net/api/cards", this.card)
         .then((res) => {
