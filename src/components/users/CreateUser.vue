@@ -19,10 +19,9 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Role</span>
-          <textarea
-            class="form-control"
-            v-model="user.role"
-          ></textarea>
+          <select class="form-select" v-model="user.role">
+            <option :value="'user'">User</option>
+          </select>
         </div>
              
 
@@ -72,15 +71,7 @@ export default {
         .catch((error) => console.log(error));
     },
   },
-  mounted() {
-    // axios
-    //   .get("http://localhost/categories")
-    //   .then((result) => {
-    //     console.log(result);
-    //     this.categories = result.data;
-    //   })
-    //   .catch((error) => console.log(error));
-  },
+  
 };
 </script>
 
