@@ -7,7 +7,7 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text">User Name</span>
-          <input type="text" class="form-control" v-model="user.username" />
+          <input type="text" class="form-control" v-model="user.username" placeholder="Enter Username" />
         </div>
 
         <div class="input-group mb-3">
@@ -15,11 +15,12 @@
           <textarea
             class="form-control"
             v-model="user.email"
+            placeholder="Enter Email"
           ></textarea>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Role</span>
-          <select class="form-select" v-model="user.role">
+          <select class="form-select" v-model="user.role" placeholder="Select Role">
             <option :value="'user'">User</option>
           </select>
         </div>
