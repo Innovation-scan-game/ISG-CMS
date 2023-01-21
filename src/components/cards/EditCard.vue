@@ -34,6 +34,13 @@
           </select>
         </div>
 
+        <div class="input-group mb-3" v-if="card.Type === 0">
+          <span class="input-group-text">Optional: upload Image</span>
+          <textarea
+            class="form-control"
+          ></textarea>
+        </div>
+
         <div class="input-group mt-4">
           <button type="button" class="btn btn-primary" @click="updateCard">
             Save changes

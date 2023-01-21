@@ -21,14 +21,18 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text">Card Category</span>
-          <!-- <select class="form-select" v-model="card.type">
-            <option
-              v-for="category in categories"
-              :key="category.id"
-              :value="category.id">
-              {{ category.name }}
-            </option>
-          </select> -->
+          <select class="form-select" v-model="card.Type">
+            <option :value=0>Open answer</option>
+            <option :value=1>Scalable</option>
+            <option :value=2>Multiple choice</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3" v-if="card.Type === 0">
+          <span class="input-group-text">Optional: upload Image</span>
+          <textarea
+            class="form-control"
+          ></textarea>
         </div>
 
         <div class="input-group mt-4">
@@ -58,7 +62,7 @@ export default {
       card: {
         Name: "",
         Body: "",
-        type: 0
+        Type: 0
       },
     };
   },
@@ -75,15 +79,6 @@ export default {
         })
         .catch((error) => console.log(error));
     },
-  },
-  mounted() {
-    // axios
-    //   .get("http://localhost/categories")
-    //   .then((result) => {
-    //     console.log(result);
-    //     this.categories = result.data;
-    //   })
-    //   .catch((error) => console.log(error));
   },
 };
 </script>

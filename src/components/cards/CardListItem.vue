@@ -2,21 +2,20 @@
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xxl-3 p-2">
     <div class="card product-card h-100">
       <div class="card-body">
-        <h2>Card number: {{card.cardNumber}}</h2>
+        <h3>{{card.cardName}}</h3>
         <div class="float-start">
-          <p>{{ card.cardName }}</p>
+          <div v-if="card.type === 0">
+            <p class="price">Type: Open answer question</p>
+          </div>
+          <div v-else-if="card.type === 1">
+            <p class="price">Type: Scalable question</p>
+          </div>
+          <div v-else-if="card.type === 2">
+            <p class="price">Type: Multiple choice question</p>
+          </div>
           <p>
             <small>{{ card.cardBody }}</small>
           </p>
-          <div v-if="card.type === 0">
-            <p class="price">Open answer question</p>
-          </div>
-          <div v-else-if="card.type === 1">
-            <p class="price">Scalable question</p>
-          </div>
-          <div v-else-if="card.type === 2">
-            <p class="price">Multiple choice question</p>
-          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -37,6 +36,7 @@ export default {
   },
   methods: {
     deleteCard(id) {
+      if(confirm("Do you really want to delete?")){
       axios
         .delete("https://cardisc.azurewebsites.net/api/cards/" + id)
         .then((result) => {
@@ -44,7 +44,8 @@ export default {
           this.$emit('update')
         })
         .catch((error) => console.log(error));
-    },
+    }
+  },
     editCard(id) {
       this.$router.push('/editcard/' + id);
     }
