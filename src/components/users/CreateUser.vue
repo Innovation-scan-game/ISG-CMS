@@ -62,7 +62,7 @@ export default {
     addUser() {
 
       axios
-        .post("https://cardisc.azurewebsites.net/api/users", this.username
+        .post("https://cardisc.azurewebsites.net/api/user", this.user
         )
         .then((res) => {
           console.log(res.data);

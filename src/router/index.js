@@ -6,8 +6,9 @@ import CreateProduct from '../components/products/CreateProduct.vue';
 import EditProduct from '../components/products/EditProduct.vue';
 import UserList from '../components/users/UserList.vue';
 import CreateUser from '../components/users/CreateUser.vue';
-import Login from '../components/Login.vue';
 import EditUser from '../components/users/EditUser.vue';
+import Login from '../components/Login.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

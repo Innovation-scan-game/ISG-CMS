@@ -48,11 +48,12 @@ import axios from '../../axios-auth'
 export default {
   name: "CreateUser",
   props: {
-    id: Number,
+    id: String,
   },
   data() {
     return {
       user: {
+        Id: this.id,
         username: "",
         email: "",
         role: "",
@@ -62,7 +63,7 @@ export default {
   methods: {
     updateUser() {
       axios
-        .put("https://cardisc.azurewebsites.net/api/users/" + this.user.id)
+        .put("https://cardisc.azurewebsites.net/api/user/", this.user)
         .then((res) => {
           console.log(res.data);
           this.$refs.form.reset();
