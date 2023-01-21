@@ -11,7 +11,7 @@ User list item
           </p>
           <img :src="user.picture">
         </div>
-        <!-- <span class="price float-end">{{ user.type }}</span> -->
+      
       </div>
       <div class="card-footer">
         <button class="btn btn-warning" @click="editUser(user.id)">Edit</button>&nbsp;&nbsp;
@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     deleteUser(id) {
-      if(confirm("Do you really want to delete?")){
       axios
         .delete("https://cardisc.azurewebsites.net/api/user/" + id)
         .then((result) => {
@@ -39,9 +38,8 @@ export default {
           this.$emit('update')
         })
         .catch((error) => console.log(error));
-    }
-  },
-   editUser(id) {
+    },
+    editUser(id) {
       this.$router.push('/edituser/' + id);
     }
   },
