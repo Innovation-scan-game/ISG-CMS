@@ -19,10 +19,9 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Role</span>
-          <textarea
-            class="form-control"
-            v-model="user.role"
-          ></textarea>
+          <select class="form-select" v-model="user.role">
+            <option :value="'user'">User</option>
+          </select>
         </div>
 
         <div class="input-group mt-4">
@@ -60,7 +59,20 @@ export default {
       },
     };
   },
+  created() {
+    this.getUserData(this.id);
+  },
   methods: {
+    async getUserData(id) {
+      try {
+        const response = await axios.get(`https://cardisc.azurewebsites.net/api/user/${id}`);
+        this.user.username = response.data.username;
+        this.user.email = response.data.email;
+        this.user.role = response.data.role;
+      } catch (error) {
+        console.error(error);
+      }
+    },
     updateUser() {
       axios
         .put("https://cardisc.azurewebsites.net/api/user/", this.user)
