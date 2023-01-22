@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>{{ store.isLoggedIn }}</h1>
+          <h1>Login</h1>
           <form>
             <div class="mb-3">
               <label for="inputUsername" class="form-label">Username</label>
