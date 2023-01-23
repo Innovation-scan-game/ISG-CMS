@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container">
-      <h2 class="mt-3 mt-lg-5">Welcome to the homepage of the CMS for the CardDisc application</h2>
+      <h2 class="mt-3 mt-lg-5">Welcome to the homepage of the CMS for the RoundTable application</h2>
       <div class="flexbox-wrapper">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
