@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     deleteUser(id) {
+      if(confirm("Do you really want to delete?")){
       axios
         .delete("https://cardisc.azurewebsites.net/api/user/" + id)
         .then((result) => {
@@ -38,6 +39,7 @@ export default {
           this.$emit('update')
         })
         .catch((error) => console.log(error));
+      }
     },
     editUser(id) {
       this.$router.push('/edituser/' + id);

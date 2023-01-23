@@ -18,10 +18,29 @@
             placeholder="Enter Email"
           ></textarea>
         </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">Password</span>
+          <input type="password"
+            class="form-control"
+            v-model="user.password"
+            placeholder="Enter Password"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">Re-enter Password</span>
+          <input type="password"
+            class="form-control"
+            v-model="user.password2"
+            placeholder="Reenter Password"
+          />
+        </div>
+
         <div class="input-group mb-3">
           <span class="input-group-text">Role</span>
           <select class="form-select" v-model="user.role" placeholder="Select Role">
-            <option :value="'user'">User</option>
+            <option :value="'user'">User</option>            
           </select>
         </div>
              
@@ -52,25 +71,30 @@ export default {
     return {
       user: {
         username: "",
-        email: "",
-        role:"",
+        email: "",        
+        password:"",
         
       },
     };
   },
   methods: {
     addUser() {
-
-      axios
-        .post("https://cardisc.azurewebsites.net/api/user", this.user
-        )
-        .then((res) => {
-          console.log(res.data);
-          this.$refs.form.reset();
-          this.$router.push("/users");
-        })
-        .catch((error) => console.log(error));
-    },
+  if (this.user.password == this.user.password2) {
+    const payload = {
+      username: this.user.username,
+      email: this.user.email,
+      password: this.user.password,
+      };
+    axios
+      .post("https://cardisc.azurewebsites.net/api/user", payload)
+      .then((res) => {
+        console.log(res.data);
+        this.$refs.form.reset();
+        this.$router.push("/users");
+      })
+      .catch((error) => console.log(error));
+  }
+},
   },
   
 };

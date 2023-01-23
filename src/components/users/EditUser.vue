@@ -17,12 +17,15 @@
             v-model="user.email"
           ></textarea>
         </div>
+        
         <div class="input-group mb-3">
           <span class="input-group-text">Role</span>
-          <select class="form-select" v-model="user.role">
+          <select class="form-select" v-model="user.role" placeholder="Select Role">
             <option :value="'user'">User</option>
+            <option :value="'Admin'">Admin</option>
           </select>
         </div>
+        
 
         <div class="input-group mt-4">
           <button type="button" class="btn btn-primary" @click="updateUser">
@@ -45,7 +48,7 @@
 import axios from '../../axios-auth'
 
 export default {
-  name: "CreateUser",
+  name: "UpdateUser",
   props: {
     id: String,
   },
@@ -55,7 +58,8 @@ export default {
         Id: this.id,
         username: "",
         email: "",
-        role: "",
+        role: "",   
+           
       },
     };
   },
@@ -69,21 +73,45 @@ export default {
         this.user.username = response.data.username;
         this.user.email = response.data.email;
         this.user.role = response.data.role;
+        this.originalRole = response.data.role;
+        this.originalUsername = response.data.username;
+      this.originalEmail = response.data.email;
       } catch (error) {
         console.error(error);
       }
     },
+
     updateUser() {
-      axios
-        .put("https://cardisc.azurewebsites.net/api/user/", this.user)
-        .then((res) => {
-          console.log(res.data);
-          this.$refs.form.reset();
-          this.$router.push("/users");
-        })
-        .catch((error) => console.log(error));
-    },
+  const updatedUser = {
+    id: this.id,
+  };
+  if (this.user.username !== this.originalUsername) {
+    updatedUser.username = this.user.username;
+  }
+  if (this.user.email !== this.originalEmail) {
+    updatedUser.email = this.user.email;
+  }
+  if (this.user.role !== this.originalRole) {
+    updatedUser.role = this.user.role;
+}
+  
+    if (Object.keys(updatedUser).length > 0) {
+    
+    axios
+      .put(`https://cardisc.azurewebsites.net/api/user/`, updatedUser)
+      .then((res) => {
+        console.log(res.data);
+        this.$refs.form.reset();
+        this.$router.push("/users");
+      })
+      .catch((error) => console.log(error));
+  } else {
+    console.log("No changes were made.");
+  }
+}
+
   },
+
 };
 </script>
 
