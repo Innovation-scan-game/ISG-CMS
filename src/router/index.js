@@ -34,10 +34,10 @@ router.beforeEach(async (to) => {
   const authRequired = !publicPages.includes(to.path);
   const auth = useLoginStore();
 
-  // if (authRequired && !auth.isLoggedIn) {
-  //     auth.returnUrl = to.fullPath;
-  //     return '/api/cms/login';
-  // }
+  if (authRequired && !auth.isLoggedIn) {
+      auth.returnUrl = to.fullPath;
+      return '/api/cms/login';
+  }
 });
 
 export default router

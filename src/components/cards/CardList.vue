@@ -5,7 +5,7 @@
         <input type="text" class="form-control" v-model="searchTerm" placeholder="Search for a card...">
       </div>
       <h2 class="mt-3 mt-lg-5">Cards</h2>
-        <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/createcard');">
+        <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/api/cms/createcard');">
             Add Cards
           </button>
       <div class="row mt-3">
