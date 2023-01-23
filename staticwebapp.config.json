@@ -1,7 +1,9 @@
 {
-    "globalHeaders": {
-      "Access-Control-Allow-Origin": "https://salmon-stone-0f9b3d703.2.azurestaticapps.net/",
-      "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": [
+            "*.{jpg,gif,png}",
+            "assets/*"
+        ]
     }
-    
-  }
+}
