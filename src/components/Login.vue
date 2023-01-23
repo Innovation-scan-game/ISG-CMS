@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>{{ store.isLoggedIn }}</h1>
+          <h1>Login</h1>
           <form>
             <div class="mb-3">
               <label for="inputUsername" class="form-label">Username</label>
@@ -14,6 +14,7 @@
               <input type="password" v-model="password" class="form-control" id="inputPassword" />
             </div>
             <button type='button' class="btn btn-primary" @click="login">Login</button>
+            <button type='button' class="btn btn-danger" @click="logout">logout</button>
             </form>
         </div>
       </div>
@@ -40,8 +41,11 @@ export default {
   methods: {
     login(){
       this.store.login(this.username, this.password)
+    },
+    logout(){
+      this.store.logout();
     }
-  }
+  },
 };
 </script>
 

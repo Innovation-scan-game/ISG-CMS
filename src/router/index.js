@@ -8,6 +8,7 @@ import UserList from '../components/users/UserList.vue';
 import CreateUser from '../components/users/CreateUser.vue';
 import EditUser from '../components/users/EditUser.vue';
 import Login from '../components/Login.vue';
+import { useLoginStore } from '@/stores/loginStore';
 
 
 const router = createRouter({
@@ -21,7 +22,22 @@ const router = createRouter({
     { path: '/users', component: UserList },     
     { path: '/createuser', component: CreateUser },
     { path: '/edituser/:id', component: EditUser, props: true  },
+    { path: '/editcard/:id', component: EditCard, props: true  , meta: {requiresAuth: true}}
+
   ]
 })
+
+
+router.beforeEach(async (to) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/login'];
+  const authRequired = !publicPages.includes(to.path);
+  const auth = useLoginStore();
+
+  if (authRequired && !auth.isLoggedIn) {
+      auth.returnUrl = to.fullPath;
+      return '/login';
+  }
+});
 
 export default router
