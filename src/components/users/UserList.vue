@@ -5,7 +5,7 @@
       <div class="form-group">
         <input type="text" class="form-control" v-model="searchTerm" placeholder="Search for a user...">
       </div>
-        <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/createuser');">
+        <button type="button" class="btn btn-primary mt-3" @click="this.$router.push('/api/cms/createuser');">
             Add Users
           </button>
       <div class="row mt-3">
