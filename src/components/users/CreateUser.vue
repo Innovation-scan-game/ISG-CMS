@@ -86,7 +86,7 @@ export default {
       password: this.user.password,
       };
     axios
-      .post("https://cardisc.azurewebsites.net/api/user", payload)
+      .post("/user", payload)
       .then((res) => {
         console.log(res.data);
         this.$refs.form.reset();

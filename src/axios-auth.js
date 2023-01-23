@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://cardisc.azurewebsites.net/api'
+    baseURL: '/api'
 });
 
 export default instance;

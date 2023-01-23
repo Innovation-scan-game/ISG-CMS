@@ -48,7 +48,7 @@ export default {
   methods: {
     update() {
       axios
-        .get("https://cardisc.azurewebsites.net/api/users")
+        .get("/users")
         .then((result) => {
           console.log(result);
           this.users = result.data;

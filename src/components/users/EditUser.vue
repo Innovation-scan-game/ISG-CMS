@@ -69,7 +69,7 @@ export default {
   methods: {
     async getUserData(id) {
       try {
-        const response = await axios.get(`https://cardisc.azurewebsites.net/api/user/${id}`);
+        const response = await axios.get(`/user/${id}`);
         this.user.username = response.data.username;
         this.user.email = response.data.email;
         this.user.role = response.data.role;
@@ -98,7 +98,7 @@ export default {
     if (Object.keys(updatedUser).length > 0) {
     
     axios
-      .put(`https://cardisc.azurewebsites.net/api/user/`, updatedUser)
+      .put(`/user/`, updatedUser)
       .then((res) => {
         console.log(res.data);
         this.$refs.form.reset();

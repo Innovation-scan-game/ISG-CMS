@@ -33,7 +33,7 @@ export default {
     deleteUser(id) {
       if(confirm("Do you really want to delete?")){
       axios
-        .delete("https://cardisc.azurewebsites.net/api/user/" + id)
+        .delete("/user/" + id)
         .then((result) => {
           console.log(result);
           this.$emit('update')

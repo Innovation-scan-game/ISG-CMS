@@ -32,7 +32,7 @@ export const useLoginStore = defineStore('loginStore', {
                 this.logout();
               }
               else if (res.data.role === "Admin"){
-                router.push("/");
+                router.push("/api/cms");
               }
             }).catch(error => console.log(error));
         }).catch(error => console.log(error));

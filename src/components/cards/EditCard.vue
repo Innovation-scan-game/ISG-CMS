@@ -43,7 +43,7 @@
           <button
             type="button"
             class="btn btn-danger"
-            @click="this.$router.push('/cards')"
+            @click="this.$router.push('/api/cms/cards')"
           >
             Cancel
           </button>
@@ -75,11 +75,11 @@ export default {
     updateCard() {
       parseInt(this.card.type)
       axios
-      .put("https://cardisc.azurewebsites.net/api/cards", this.card)
+      .put("/cards", this.card)
         .then((res) => {
           console.log(res.data);
           this.$refs.form.reset();
-          this.$router.push("/cards");
+          this.$router.push("/api/cms/cards");
         })
         .catch((error) => console.log(error));
     },

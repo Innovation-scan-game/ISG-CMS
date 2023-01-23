@@ -38,7 +38,7 @@ export default {
     deleteCard(id) {
       if(confirm("Do you really want to delete?")){
       axios
-        .delete("https://cardisc.azurewebsites.net/api/cards/" + id)
+        .delete("/cards/" + id)
         .then((result) => {
           console.log(result);
           this.$emit('update')
@@ -47,7 +47,7 @@ export default {
     }
   },
     editCard(id) {
-      this.$router.push('/editcard/' + id);
+      this.$router.push('/api/cms/editcard/' + id);
     }
   },
 };
