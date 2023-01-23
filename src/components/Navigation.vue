@@ -8,8 +8,8 @@
           >
         </li>      
         <li class="nav-item">
-          <router-link to="/products" class="nav-link" active-class="active"
-            >Products</router-link
+          <router-link to="/cards" class="nav-link" active-class="active"
+            >Cards</router-link
           >
         </li>
         <li class="nav-item">
