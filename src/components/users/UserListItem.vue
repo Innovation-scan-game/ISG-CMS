@@ -42,7 +42,7 @@ export default {
       }
     },
     editUser(id) {
-      this.$router.push('/edituser/' + id);
+      this.$router.push('/api/cms/edituser/' + id);
     }
   },
 };
